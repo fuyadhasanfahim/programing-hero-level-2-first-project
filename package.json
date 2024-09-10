@@ -9,6 +9,7 @@
         "lint:fix": "eslint --fix src/**/*.{js,ts}",
         "format": "prettier --ignore-path .gitignore --write \"./src/**/*.+(js|ts|json)\"",
         "prettier": "prettier --write src",
+        "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
@@ -32,6 +33,7 @@
         "eslint-config-prettier": "^9.1.0",
         "globals": "^15.9.0",
         "prettier": "^3.3.3",
+        "ts-node-dev": "^2.0.0",
         "typescript": "^5.5.4",
         "typescript-eslint": "^8.4.0"
     }

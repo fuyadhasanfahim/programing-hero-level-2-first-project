@@ -18,13 +18,13 @@ export default [
             'no-console': 'warn',
             'no-undef': 'error',
         },
-        globals: {
-            process: 'readonly',
-        },
-        extends: [
-            'eslint:recommended',
-            'plugin:@typescript-eslint/recommended',
-            'prettier',
-        ],
+        // globals: {
+        //     process: 'readonly',
+        // },
+        // extends: [
+        //     'eslint:recommended',
+        //     'plugin:@typescript-eslint/recommended',
+        //     'prettier',
+        // ],
     },
 ]
