@@ -6,8 +6,13 @@ export default [
     {
         files: ['**/*.{js,mjs,cjs,ts}'],
         ignores: ['node_modules', 'dist', '*.config.js'],
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                process: 'readonly',
+            },
+        },
     },
-    { languageOptions: { globals: globals.browser } },
     pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
     {
@@ -18,13 +23,5 @@ export default [
             'no-console': 'warn',
             'no-undef': 'error',
         },
-        // globals: {
-        //     process: 'readonly',
-        // },
-        // extends: [
-        //     'eslint:recommended',
-        //     'plugin:@typescript-eslint/recommended',
-        //     'prettier',
-        // ],
     },
 ]
