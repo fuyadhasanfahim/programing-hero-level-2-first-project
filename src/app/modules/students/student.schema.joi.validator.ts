@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-const joiUserNameSchema = Joi.object({
+const joTUserNameSchema = Joi.object({
     firstName: Joi.string()
         .required()
         .min(2)
@@ -21,7 +21,7 @@ const joiUserNameSchema = Joi.object({
         .regex(/^[A-Za-z]+$/),
 })
 
-const joiGuardianSchema = Joi.object({
+const joTGuardianSchema = Joi.object({
     fathersName: Joi.string()
         .required()
         .min(2)
@@ -60,7 +60,7 @@ const joiGuardianSchema = Joi.object({
         .regex(/^[0-9]+$/),
 })
 
-const joiLocalGuardianSchema = Joi.object({
+const joTLocalGuardianSchema = Joi.object({
     name: Joi.string()
         .required()
         .min(2)
@@ -87,7 +87,7 @@ const joiValidationSchema = Joi.object({
         'string.empty': 'Student ID cannot be empty.',
     }),
 
-    name: joiUserNameSchema.required().messages({
+    name: joTUserNameSchema.required().messages({
         'any.required': 'Name is required.',
         'string.empty': 'Name cannot be empty.',
     }),
@@ -135,11 +135,11 @@ const joiValidationSchema = Joi.object({
         'string.empty': 'Permanent address cannot be empty.',
     }),
 
-    guardian: joiGuardianSchema.required().messages({
+    guardian: joTGuardianSchema.required().messages({
         'any.required': 'Guardian information is required.',
     }),
 
-    localGuardian: joiLocalGuardianSchema.required().messages({
+    localGuardian: joTLocalGuardianSchema.required().messages({
         'any.required': 'Local guardian information is required.',
     }),
 

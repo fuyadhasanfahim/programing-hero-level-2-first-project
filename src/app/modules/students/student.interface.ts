@@ -1,12 +1,12 @@
-// * Create interface for student data
+import { Types } from 'mongoose'
 
-export interface IUserName {
+export interface TUserName {
     firstName: string
     middleName?: string
     lastName: string
 }
 
-export interface IGuardian {
+export interface TGuardian {
     fathersName: string
     fathersOccupation: string
     fathersContactNo: string
@@ -15,16 +15,16 @@ export interface IGuardian {
     mothersContactNo: string
 }
 
-export interface ILocalGuardian {
+export interface TLocalGuardian {
     name: string
     occupation: string
     contactNo: string
 }
 
-export interface IStudent {
+export interface TStudent {
     id: string
-    password: string
-    name: IUserName
+    user: Types.ObjectId
+    name: TUserName
     gender: 'Male' | 'Female' | 'Other'
     email: string
     dateOfBirth: string
@@ -33,8 +33,7 @@ export interface IStudent {
     bloodGroup?: 'A+' | 'B+' | 'AB+' | 'O+' | 'A-' | 'B-' | 'AB-' | 'O-'
     presentAddress: string
     permanentAddress: string
-    guardian: IGuardian
-    localGuardian: ILocalGuardian
+    guardian: TGuardian
+    localGuardian: TLocalGuardian
     profileImage?: string
-    isActive: 'active' | 'inactive'
 }

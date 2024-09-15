@@ -72,11 +72,11 @@ const StudentSchema = new Schema({
         required: [true, 'Student ID is required.'],
         unique: true,
     },
-    password: {
-        type: String,
-        required: [true, 'Password is required.'],
-        min: [8, 'Password must be at least 8 characters long.'],
-        max: [30, "Password can't be more than 30 characters long."],
+    user: {
+        type: Schema.Types.ObjectId,
+        required: [true, 'Student ID is required.'],
+        unique: true,
+        ref: 'User',
     },
     name: { type: UserNameSchema, required: [true, 'Full name is required.'] },
     gender: {
@@ -133,12 +133,6 @@ const StudentSchema = new Schema({
         required: [true, 'Local guardian information is required.'],
     },
     profileImage: { type: String, required: false },
-    isActive: {
-        type: String,
-        enum: ['active', 'inactive'],
-        required: [true, 'Student status (active/inactive) is required.'],
-        default: 'active',
-    },
     isDeleted: {
         type: Boolean,
         default: false,
