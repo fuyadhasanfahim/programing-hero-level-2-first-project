@@ -2,7 +2,7 @@
 
 export interface IUserName {
     firstName: string
-    middleName: string
+    middleName?: string
     lastName: string
 }
 
@@ -23,8 +23,9 @@ export interface ILocalGuardian {
 
 export interface IStudent {
     id: string
+    password: string
     name: IUserName
-    gender: 'Male' | 'Female'
+    gender: 'Male' | 'Female' | 'Other'
     email: string
     dateOfBirth: string
     contactNo: string

@@ -1,9 +1,27 @@
-import { Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
+import validator from 'validator'
 
 const UserNameSchema = new Schema({
-    firstName: { type: String, required: [true, 'First name is required.'] },
-    middleName: { type: String, required: false },
-    lastName: { type: String, required: [true, 'Last name is required.'] },
+    firstName: {
+        type: String,
+        required: [true, 'First name is required.'],
+        trim: true,
+        validate: function (value: string) {
+            return value.charAt(0).toUpperCase() + value.slice(1)
+        },
+    },
+    middleName: { type: String, required: false, trim: true },
+    lastName: {
+        type: String,
+        required: [true, 'Last name is required.'],
+        trim: true,
+        validate: {
+            validator: (value: string) => {
+                return validator.isAlpha(value)
+            },
+            message: '{VALUE} is not valid!',
+        },
+    },
 })
 
 const GuardianSchema = new Schema({
@@ -54,6 +72,12 @@ const StudentSchema = new Schema({
         required: [true, 'Student ID is required.'],
         unique: true,
     },
+    password: {
+        type: String,
+        required: [true, 'Password is required.'],
+        min: [8, 'Password must be at least 8 characters long.'],
+        max: [30, "Password can't be more than 30 characters long."],
+    },
     name: { type: UserNameSchema, required: [true, 'Full name is required.'] },
     gender: {
         type: String,
@@ -68,6 +92,12 @@ const StudentSchema = new Schema({
         type: String,
         required: [true, 'Email address is required.'],
         unique: true,
+        validate: {
+            validator: (value: string) => {
+                return validator.isEmail(value)
+            },
+            message: '{VALUE} is not a valid email address.',
+        },
     },
     dateOfBirth: {
         type: String,
@@ -109,6 +139,18 @@ const StudentSchema = new Schema({
         required: [true, 'Student status (active/inactive) is required.'],
         default: 'active',
     },
+    isDeleted: {
+        type: Boolean,
+        default: false,
+    },
 })
+
+StudentSchema.methods.isUserExist = async function (): Promise<boolean> {
+    const existingStudent = await mongoose
+        .model('Student')
+        .findOne({ id: this.id })
+
+    return !!existingStudent
+}
 
 export default StudentSchema
