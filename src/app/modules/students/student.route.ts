@@ -3,12 +3,8 @@ import express from 'express'
 
 const router = express.Router()
 
-// ? This will retrieve students data
 router.get('/', StudentController.getAllStudents)
-
-// ? This will retrieve student data
 router.get('/:studentId', StudentController.getSingleStudent)
-
 router.delete('/:studentId', StudentController.deleteStudent)
 
 export const StudentRoutes = router
