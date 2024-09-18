@@ -17,10 +17,10 @@ router.get('/', AcademicSemesterControllers.getAllAcademicSemesters)
 
 router.get('/:id', AcademicSemesterControllers.getSingleAcademicSemesters)
 
-router.put(
+router.patch(
     '/:id',
     validateRequest(
-        AcademicSemesterValidation.academicSemesterSchemaValidation,
+        AcademicSemesterValidation.updateAcademicSemesterSchemaValidation,
     ),
     AcademicSemesterControllers.updateAcademicSemester,
 )

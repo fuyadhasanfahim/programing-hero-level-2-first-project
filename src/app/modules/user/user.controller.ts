@@ -11,7 +11,7 @@ const createUser = catchAsync(async (req, res, next) => {
     const result = await UserServices.createUserIntoDB(password, studentData)
 
     sendResponse(res, {
-        status: httpStatus.OK,
+        status: httpStatus.CREATED,
         success: true,
         message: 'Student is created successfully',
         data: result,

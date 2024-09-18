@@ -100,7 +100,7 @@ const StudentSchema = new Schema({
         },
     },
     dateOfBirth: {
-        type: Date,
+        type: String,
         required: [true, 'Date of birth is required.'],
     },
     contactNo: {
@@ -133,6 +133,11 @@ const StudentSchema = new Schema({
         required: [true, 'Local guardian information is required.'],
     },
     profileImage: { type: String, required: false },
+    admissionSemester: {
+        type: Schema.Types.ObjectId,
+        required: [true, 'Admission semester is required.'],
+        ref: 'AcademicSemester',
+    },
     isDeleted: {
         type: Boolean,
         default: false,

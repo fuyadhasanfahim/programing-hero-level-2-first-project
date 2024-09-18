@@ -27,7 +27,7 @@ export interface TStudent {
     name: TUserName
     gender: 'Male' | 'Female' | 'Other'
     email: string
-    dateOfBirth: Date
+    dateOfBirth: string
     contactNo: string
     emergencyContactNo: string
     bloodGroup?: 'A+' | 'B+' | 'AB+' | 'O+' | 'A-' | 'B-' | 'AB-' | 'O-'
@@ -36,4 +36,6 @@ export interface TStudent {
     guardian: TGuardian
     localGuardian: TLocalGuardian
     profileImage?: string
+    admissionSemester: Types.ObjectId
+    isDeleted: boolean
 }

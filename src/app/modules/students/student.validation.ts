@@ -79,7 +79,7 @@ const studentValidationSchema = z.object({
                 .string()
                 .email('Email address must be valid.')
                 .min(1, 'Email address is required.'),
-            dateOfBirth: z.date().optional(),
+            dateOfBirth: z.string().optional(),
             contactNo: z
                 .string()
                 .min(10, 'Contact number is required.')
@@ -106,6 +106,7 @@ const studentValidationSchema = z.object({
             guardian: guardianValidationSchema,
             localGuardian: localGuardianValidationSchema,
             profileImage: z.string().optional(),
+            admissionSemester: z.string()
         }),
     }),
 })
