@@ -79,7 +79,7 @@ const studentValidationSchema = z.object({
                 .string()
                 .email('Email address must be valid.')
                 .min(1, 'Email address is required.'),
-            dateOfBirth: z.string().min(1, 'Date of birth is required.'),
+            dateOfBirth: z.date().optional(),
             contactNo: z
                 .string()
                 .min(10, 'Contact number is required.')

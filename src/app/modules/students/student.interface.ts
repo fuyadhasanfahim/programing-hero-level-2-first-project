@@ -27,7 +27,7 @@ export interface TStudent {
     name: TUserName
     gender: 'Male' | 'Female' | 'Other'
     email: string
-    dateOfBirth: string
+    dateOfBirth: Date
     contactNo: string
     emergencyContactNo: string
     bloodGroup?: 'A+' | 'B+' | 'AB+' | 'O+' | 'A-' | 'B-' | 'AB-' | 'O-'
